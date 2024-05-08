@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <section class="order-creation">
+        <div class="container">
+            <h1>Create Order</h1>
+            <form action="{% url 'create-order' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="product">Product</label>
+                    <select name="product" id="product">
+                        {% for product in products %}
+                            <option value="{{ product.id }}">{{ product.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" name="quantity" id="quantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea name="address" id="address" required></textarea>
+                </div>
+                <button type="submit" class="btn">Place Order</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

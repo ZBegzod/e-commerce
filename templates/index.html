@@ -1,0 +1,174 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+<nav class="navbar">
+    <div class="container">
+        <div class="title-text">
+            <h1>Market</h1>
+
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="item-link" href="#">Overview</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="item-link" href="#">Pages</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="item-link" href="#">Portfolio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="item-link" href="#">Template</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="item-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-link">
+            <a class="navv-link" href="#">Buy Market</a>
+        </div>
+    </div>
+</nav>
+
+<section class="for">
+    <div class="container">
+        <div class="for-text">
+            <p>The founder of the market</p>
+            <h2>Lowest Price Guarantee Only in Our Market</h2>
+            <a href="#">BUTTON SUB</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- 2 -->
+
+<section class="pages">
+    <div class="container">
+        <div class="pages-title">
+            <p>Our Main Menu</p>
+            <h2>Market Products</h2>
+        </div>
+        <form id="category-form">
+            <label for="category">Filter by category:</label>
+            <select name="category" id="category">
+                <option value="">All</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <div class="products-cards">
+            {% for product in page_obj %}
+                <div class="card">
+                    {% if product.image %}
+                        <a href="" class="card-img-link">
+                            <img src="{{ product.image.url }}" alt="" class="card-img">
+                        </a>
+                    {% else %}
+                        <a href="" class="card-img-link">
+                            <img src="../static/media/null.jpg" alt="{{ product.name }} image">
+                        </a>
+                    {% endif %}
+
+                    <div class="card-data">
+                        <h3 class="card-category">{{ product.category }}</h3>
+                        <h3 class="card-title">{{ product.name }}</h3>
+                        <span class="card-price">
+                            <span class="card-deleted-price">
+                            595 $</span>
+                            {{ product.price }} $
+                        </span>
+
+                        <a href="{% url 'create-order/product.id'  %}" class="card-btn">
+                            <span>
+                                Order
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+        <script>
+            function createProductCardHTML(product) {
+                let cardHTML = `
+                    <div class="card">
+                         <a href="" class="card-img-link">
+                            ${product.image ? `<img src="${product.image}" class="card-img">` : `<img src="../static/media/null.jpg" class="card-img">`}
+                        </a>
+                        <div class="card-data">
+                            <h3 class="card-category">${product.category}</h3>
+                            <h3 class="card-title">${product.name}</h3>
+                            <span class="card-price">
+                                  <span class="card-deleted-price">595 $</span>
+                                  ${product.price} $
+                            </span>
+                            <a href="#" class="card-btn">
+                              <span>Order</span>
+                            </a>
+                        </div>
+                    </div>
+                  `;
+                return cardHTML;
+            }
+
+            document.getElementById('category').addEventListener('change', function () {
+                var categorySlug = this.value;
+                var url = new URL(window.location.href);
+                url.searchParams.set('category', categorySlug);
+
+                fetch(url.toString(), {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+
+                        const productsCardsContainer = document.querySelector('.products-cards');
+                        productsCardsContainer.innerHTML = '';
+
+                        data.products.forEach(product => {
+                            const productCardHTML = createProductCardHTML(product);
+                            productsCardsContainer.innerHTML += productCardHTML;
+                        });
+                    });
+            });
+        </script>
+
+        <div class="pagination">
+        <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+            <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+    </span>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

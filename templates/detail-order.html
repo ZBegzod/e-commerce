@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>Order Detail</h1>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Product: {{ order.product.name }}</h5>
+      <p class="card-text">Quantity: {{ order.quantity }}</p>
+      <p class="card-text">Total Price: {{ order.total_price }}</p>
+      <p class="card-text">Status: {{ order.status }}</p>
+      <p class="card-text">Created At: {{ order.created_at }}</p>
+      <p class="card-text">Updated At: {{ order.updated_at }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

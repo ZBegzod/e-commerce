@@ -1,0 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #181511;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.navbar .container .title-text {
+    display: flex;
+    align-items: center;
+    color: #FFAE2B;
+}
+
+.navbar .container .nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .container .nav-list .nav-item {
+    margin: 0 25px;
+}
+
+.navbar .container .nav-list .nav-item .item-link {
+    color: #aca592;
+    transition: 0.65s;
+}
+
+.navbar .container .nav-list .nav-item .item-link:hover {
+    color: #FFAE2B;
+}
+
+.navbar .container .nav-link {
+    border: 1px solid #FFAE2B;
+    padding: 10px 20px;
+    transition: 0.65s;
+}
+
+.navbar .container .nav-link .navv-link {
+    color: #FFAE2B;
+    transition: 0.65s;
+}
+
+.navbar .container .nav-link:hover {
+    background-color: #FFAE2B;
+}
+
+.navbar .container .nav-link:hover .navv-link {
+    color: #fff;
+}
+
+.for {
+    width: 100%;
+    background-size: 100%;
+    padding: 320px 0px;
+    background-repeat: no-repeat;
+    margin-top: 20px;
+}
+
+.for .for-text {
+    text-align: center;
+    margin-top: -170px;
+}
+
+.for .for-text p {
+    color: #FFAE2B;
+    margin-bottom: 20px;
+}
+
+.for .for-text h2 {
+    color: #fff;
+    font-size: 50px;
+    width: 600px;
+    font-weight: 500;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+
+.for .for-text a {
+    border: 1px solid #FFAE2B;
+    padding: 10px 20px;
+    color: #000;
+    font-size: 11px;
+    background-color: #FFAE2B;
+    transition: 0.65s;
+}
+
+.for .for-text a:hover {
+    background-color: violet;
+}
+
+.pages-title {
+    text-align: center;
+}
+
+.pages-title h2 {
+    font-size: 50px;
+    color: #FFAE2B;
+}
+
+.pages-title p {
+    color: #aca592;
+}
+
+.pages .container .page-list {
+    display: grid;
+    /*grid-template-columns: repeat(3, 1fr);*/
+    grid-gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.pages .container .page-list .page-item {
+    border: 1px solid #4B4136;
+    width: 340px;
+    height: 410px;
+    margin: 20px 20px;
+    transition: 0.65s;
+}
+
+.pages .container .page-list .page-item p {
+    text-align: center;
+    color: #fff;
+}
+
+.pages .container .page-list .page-item:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 0px 5px 50px 15px black;
+    opacity: 0.7;
+
+}
+
+/*# sourceMappingURL=stayl.css.map */
+
+.pages {
+    margin-top: -150px;
+}
+
+.page-item {
+    padding: 50px 0;
+}
+
+.page-item h2 {
+    text-align: center;
+    color: #aca592;
+    margin-top: 10px;
+}
+
+.page-item h1 {
+    text-align: center;
+    color: #aca592;
+    margin-top: 5px;
+}
+
+
+.page-item p {
+
+    margin-top: 10px;
+}
+
+.page-item img {
+    height: 250px;
+    margin-top: -50px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination .step-links {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.pagination .step-links a {
+    color: #fff;
+    background-color: #333;
+    text-decoration: none;
+    padding: 6px 12px;
+    margin: 0 4px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.pagination .step-links a:hover {
+    background-color: #444;
+}
+
+.pagination .step-links .current {
+    font-weight: bold;
+    color: #fff;
+    background-color: #555;
+    padding: 6px 12px;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+
+/* Step Links */
+.step-links {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.step-links a {
+    color: #fff;
+    background-color: #333;
+    text-decoration: none;
+    padding: 4px 8px;
+    margin: 0 2px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.step-links a:hover {
+    background-color: #444;
+}
+
+.step-links .current {
+    font-weight: bold;
+    color: #fff;
+    background-color: #555;
+    padding: 4px 8px;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.product-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 10px;
+    color: #ccc;
+}
+
+.product-info h3 {
+    margin-top: 0;
+    color: #000
+}
